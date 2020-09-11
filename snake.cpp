@@ -20,7 +20,7 @@ bool gameOver;
 enum eDirection {STOP=0, LEFT, RIGHT, UP, DOWN};
 eDirection dir=STOP;
 
-int getch(void)
+int getch(void) //yeah lol it's getch cause I can't use conio.h on linux
 {
     struct termios oldattr, newattr;
     int ch;
@@ -49,7 +49,7 @@ void disable_raw_mode()
     tcsetattr(0, TCSANOW, &term);
 }
 
-bool kbhit()
+bool kbhit() //this is fucked up a bit cause you need to run enable_raw_mode() and disable_raw_mode to make this function work
 {
     int byteswaiting;
     ioctl(0, FIONREAD, &byteswaiting);
